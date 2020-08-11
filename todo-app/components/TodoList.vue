@@ -26,7 +26,9 @@ export default {
   },
   mounted () {
     let touch = {}
+    console.log('this.$el', this.$el)
     this.$el.addEventListener('touchstart', evt => {
+      console.log('evt', evt)
       touch.startX = evt.touches[0].clientX
       touch.endX = 0
     })
@@ -42,6 +44,7 @@ export default {
       } else {
         this.prevTodo()
       }
+      console.log('touch', touch)
     })
   },
   computed: {

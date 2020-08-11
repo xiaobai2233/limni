@@ -4,7 +4,8 @@
       v-for="(todo, index) in todos"
       :key="todo.name"
       :colors="todo.colors"
-      :active="index <= currentIndex"
+      :active="index == currentIndex"
+      :zIndex="index"
     />
   </div>
 </template>

@@ -2,11 +2,12 @@
   <div
     class="gradient_color"
     :class="{ gradient_color__active: active }"
-    :style="{ backgroundImage: gradientColor }"
+    :style="{ backgroundImage: gradientColor,zIndex: zIndex}"
   />
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     colors: {
@@ -14,6 +15,10 @@ export default {
     },
     active: {
       type: Boolean
+    },
+    zIndex: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
@@ -21,7 +26,8 @@ export default {
       const colorBottom = `color-stop(30%, ${this.colors[0]})`
       const colorTop = `to(${this.colors[1]})`
       return `-webkit-gradient(linear, left bottom, left top, ${colorBottom}, ${colorTop})`
-    }
+    },
+    ...mapState(['currentIndex'])
   }
 }
 </script>
